@@ -14,10 +14,9 @@ app.get("/redis" , async(req , res)=> {
 app.get("/mongo" , async(req , res)=> {
     const url = process.env.MONGO_URL || "mongodb://localhost:27017/chai_aur_redis"
 
-    if(mongoose.connection.readyState === 0){
+    if(mongoose.connection.readystate === 0){
         await mongoose.connect(url)
     }
-
     res.json({mongo : "connected" , database : mongoose.connection.name})
 });
 
