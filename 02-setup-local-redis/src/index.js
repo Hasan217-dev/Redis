@@ -14,12 +14,12 @@ app.get("/redis" , async(req , res)=> {
 app.get("/mongo" , async(req , res)=> {
     const url = process.env.MONGO_URL || "mongodb://localhost:27017/chai_aur_redis"
 
-    if(mongoose.connection.readystate === 0){
+    if(mongoose.connection.readyState === 0){
         await mongoose.connect(url)
     }
     res.json({mongo : "connected" , database : mongoose.connection.name})
 });
 
-app.listen(300 , () => {
+app.listen(3000 , () => {
     console.log("Server is running on port 3000")
 });
